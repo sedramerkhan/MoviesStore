@@ -1,0 +1,52 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "title": "Animation"
+    },
+    {
+      "id": 2,
+      "title": "Action"
+    },
+    {
+      "id": 3,
+      "title": "Drama"
+    },
+    {
+      "id": 4,
+      "title": "Comedy"
+    },
+    {
+      "id": 5,
+      "title": "Horror"
+    },
+    {
+      "id": 6,
+      "title": "Science Fiction"
+    },
+    {
+      "id": 7,
+      "title": "Romance"
+    },
+    {
+      "id": 8,
+      "title": "Thriller"
+    },
+    {
+      "id": 9,
+      "title": "Arabic"
+    },
+    {
+      "id": 10,
+      "title": "Musical"
+    },
+    {
+      "id": 11,
+      "title": "Documentation"
+    },
+    {
+      "id": 12,
+      "title": "Others"
+    }
+  ]
+}

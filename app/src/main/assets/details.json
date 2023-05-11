@@ -1,0 +1,291 @@
+{
+  "movies": [
+    {
+      "id": 1,
+      "category_id": 1,
+      "title": "Puss in Boots: The Last Wish",
+      "summary": "When Puss in Boots discovers that his passion for adventure has taken its toll and he has burned through eight of his nine lives, he launches an epic journey to restore them by finding the mythical Last Wish.",
+      "actors": [
+        {
+          "id": 1,
+          "name": "Antonio Banderas"
+        },
+        {
+          "id": 2,
+          "name": "Salma Hayek"
+        },
+        {
+          "id": 3,
+          "name": "Harvey Guillén"
+        },
+        {
+          "id": 4,
+          "name": "Florence Pugh"
+        }
+      ],
+      "director": "Joel Crawford",
+      "writers": [
+        "Paul Fisher",
+        "Tommy Swerdlow",
+        "Tom Wheeler"
+      ],
+      "rating": 7.9,
+      "youtube_video_id": "RqrXhwS33yc",
+      "year": "2022"
+    },
+    {
+      "id": 2,
+      "category_id": 1,
+      "title": "Minions: The Rise of Gru",
+      "summary": "The untold story of one twelve-year-old's dream to become the world's greatest supervillain.",
+      "actors": [
+        {
+          "id": 5,
+          "name": "Steve Carell"
+        },
+        {
+          "id": 6,
+          "name": "Pierre Coffin"
+        },
+        {
+          "id": 7,
+          "name": "Alan Arkin"
+        },
+        {
+          "id": 8,
+          "name": "Taraji P. Henson"
+        }
+      ],
+      "director": "Kyle Balda",
+      "writers": [
+        "Matthew Fogel",
+        "Brian Lynch",
+        "Matthew Fogel"
+      ],
+      "rating": 6.6,
+      "youtube_video_id": "6DxjJzmYsXo",
+      "year": "2022"
+    },
+    {
+      "id": 3,
+      "category_id": 1,
+      "title": "Moana",
+      "summary": "In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana's island, she answers the Ocean's call to seek out the Demigod to set things right.",
+      "actors": [
+        {
+          "id": 9,
+          "name": "Auli'i Cravalho"
+        },
+        {
+          "id": 10,
+          "name": "Dwayne Johnson"
+        },
+        {
+          "id": 11,
+          "name": "Rachel House"
+        },
+        {
+          "id": 12,
+          "name": "Temuera Morrison"
+        }
+      ],
+      "director": "Ron Clements",
+      "writers": [
+        "Jared Bush",
+        "Ron Clements",
+        "John Musker"
+      ],
+      "rating": 7.6,
+      "youtube_video_id": "LKFuXETZUsI",
+      "year": "2022"
+    },
+    {
+      "id": 4,
+      "category_id": 2,
+      "title": "Avengers: Infinity War",
+      "summary": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos before his blitz of devastation and ruin puts an end to the universe.",
+      "actors": [
+        {
+          "id": 13,
+          "name": "Robert Downey Jr."
+        },
+        {
+          "id": 14,
+          "name": "Chris Hemsworth"
+        },
+        {
+          "id": 15,
+          "name": "Mark Ruffalo"
+        },
+        {
+          "id": 16,
+          "name": "Chris Evans"
+        },
+        {
+          "id": 17,
+          "name": "Scarlett Johansson"
+        },
+        {
+          "id": 18,
+          "name": "Don Cheadle"
+        },
+        {
+          "id": 19,
+          "name": "Benedict Cumberbatch"
+        },
+        {
+          "id": 20,
+          "name": "Tom Holland"
+        },
+        {
+          "id": 21,
+          "name": "Chadwick Boseman"
+        }
+      ],
+      "director": "Anthony Russo",
+      "writers": [
+        "Christopher Markus",
+        "Stephen McFeely",
+        "Stan Lee"
+      ],
+      "rating": 8.4,
+      "youtube_video_id": "6ZfuNTqbHE8",
+      "year": "2018"
+    },
+    {
+      "id": 5,
+      "category_id": 2,
+      "title": "The Matrix",
+      "summary": "When a beautiful stranger leads computer hacker Neo to a forbidding underworld, he discovers the shocking truth--the life he knows is the elaborate deception of an evil cyber-intelligence.",
+      "actors": [
+        {
+          "id": 29,
+          "name": "Keanu Reeves"
+        },
+        {
+          "id": 30,
+          "name": "Laurence Fishburne"
+        },
+        {
+          "id": 31,
+          "name": "Carrie-Anne Moss"
+        },
+        {
+          "id": 32,
+          "name": "Hugo Weaving"
+        },
+        {
+          "id": 33,
+          "name": "Gloria Foster"
+        }
+      ],
+      "director": "Lana Wachowski",
+      "writers": [
+        "Lilly Wachowski",
+        "Lana Wachowski"
+      ],
+      "rating": 8.7,
+      "youtube_video_id": "vKQi3bBA1y8",
+      "year": "1999"
+    },
+    {
+      "id": 6,
+      "category_id": 2,
+      "title": "The Dark Knight",
+      "summary": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "actors": [
+        {
+          "id": 22,
+          "name": "Christian Bale"
+        },
+        {
+          "id": 23,
+          "name": "Heath Ledger"
+        },
+        {
+          "id": 24,
+          "name": "Aaron Eckhart"
+        },
+        {
+          "id": 25,
+          "name": "Michael Caine"
+        },
+        {
+          "id": 26,
+          "name": "Maggie Gyllenhaal"
+        },
+        {
+          "id": 27,
+          "name": "Gary Oldman"
+        },
+        {
+          "id": 28,
+          "name": "Morgan Freeman"
+        }
+      ],
+      "director": "Christopher Nolan",
+      "writers": [
+        "Jonathan Nolan",
+        "Christopher Nolan"
+      ],
+      "rating": 9.0,
+      "youtube_video_id": "EXeTwQWrcwY",
+      "year": "2008"
+    },
+    {
+      "id": 7,
+      "category_id": 4,
+      "title": "Free Guy",
+      "summary": "A bank teller discovers that he's actually an NPC inside a brutal, open world video game.",
+      "actors": [
+        {
+          "id": 40,
+          "name": "Ryan Reynolds"
+        },
+        {
+          "id": 41,
+          "name": "Jodie Comer"
+        },
+        {
+          "id": 43,
+          "name": "Channing Tatum"
+        }
+      ],
+      "director": "Shawn Levy",
+      "writers": [
+        "Matt Lieberman",
+        "Zak Penn"
+      ],
+      "rating": 7.1,
+      "youtube_video_id": "tK6jSOaoVDk",
+      "year": "2021"
+    },
+    {
+      "id": 8,
+      "category_id": 4,
+      "title": "Murder Mystery",
+      "summary": "A New York cop and his wife go on a European vacation to reinvigorate the spark in their marriage, but end up getting framed and on the run for the death of an elderly billionaire.",
+      "actors": [
+        {
+          "id": 50,
+          "name": "Jennifer Aniston"
+        },
+        {
+          "id": 51,
+          "name": "Adam Sandler"
+        },
+        {
+          "id": 52,
+          "name": "Luke Evans"
+        }
+      ],
+      "director": "Kyle Newacheck",
+      "writers": [
+        "James Vanderbilt"
+      ],
+      "rating": 6.0,
+      "youtube_video_id": "5YEVQDr2f3Q",
+      "year": "2019"
+    }
+  ]
+}
