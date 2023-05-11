@@ -25,6 +25,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Greeting("Android")
+//                    val data= getData(this,"details.json", object : TypeToken<List<Detail>>() {}.type) as List<Detail>
+//                    Text(data.toString())
                 }
             }
         }

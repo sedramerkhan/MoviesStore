@@ -1,6 +1,6 @@
 package com.example.moviesstore.model
 
-data class MovieDetails(
+data class Detail(
     val actors: List<Actor>,
     val category_id: Int,
     val director: String,
