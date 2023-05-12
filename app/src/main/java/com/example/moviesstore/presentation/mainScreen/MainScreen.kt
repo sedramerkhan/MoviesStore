@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.moviesstore.presentation.LogInTransitions
 import com.example.moviesstore.presentation.destinations.MovieDetailsScreenDestination
 import com.example.moviesstore.presentation.home.components.TopAppBar
 import com.example.moviesstore.presentation.mainScreen.moviesCategoriesView.MoviesCategoriesView
@@ -24,8 +25,7 @@ import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @OptIn(ExperimentalAnimationApi::class)
-@RootNavGraph(start = true)
-@Destination
+@Destination(style = LogInTransitions::class)
 @Composable
 fun MainScreen(
     navigator: DestinationsNavigator,

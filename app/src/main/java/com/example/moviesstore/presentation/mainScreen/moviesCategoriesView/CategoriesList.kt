@@ -1,5 +1,6 @@
 package com.example.moviesstore.presentation.mainScreen.moviesCategoriesView
 
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
