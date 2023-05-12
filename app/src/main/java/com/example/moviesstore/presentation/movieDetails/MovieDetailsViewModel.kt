@@ -1,4 +1,6 @@
 package com.example.moviesstore.presentation.movieDetails
 
-class MovieDetailsViewModel {
+import androidx.lifecycle.ViewModel
+
+class MovieDetailsViewModel : ViewModel() {
 }

@@ -1,4 +1,6 @@
 package com.example.moviesstore.presentation.login
 
-class LogInViewModel {
+import androidx.lifecycle.ViewModel
+
+class LogInViewModel: ViewModel() {
 }
