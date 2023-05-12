@@ -14,9 +14,9 @@ private val LightThemeColors = lightColors(
     error = RedErrorDark,
     onError = RedErrorLight,
     background = GrayBold,
-    onBackground = Color.White,
+    onBackground = GraySuperLight,
     surface = GrayLight,
-    onSurface = Color.White,
+    onSurface = GraySuperLight,
 )
 
 

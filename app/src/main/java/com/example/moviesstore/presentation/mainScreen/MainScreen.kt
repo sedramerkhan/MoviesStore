@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.moviesstore.presentation.home.components.TopAppBar
+import com.example.moviesstore.presentation.mainScreen.MoviesCategoriesView.MoviesCategoriesView
 import com.example.moviesstore.presentation.mainScreen.components.BottomNavBar
 import com.example.moviesstore.presentation.mainScreen.components.View
 import com.ramcosta.composedestinations.annotation.Destination
@@ -36,7 +37,7 @@ fun MainScreen(
         }
     ) {
         Column(
-            modifier = Modifier.padding(it)
+            modifier = Modifier.padding(it).padding(20.dp)
         ){
             TopAppBar(searchValue, onValueChanged = {
                 searchValue = it
@@ -47,7 +48,7 @@ fun MainScreen(
             AnimatedContent(targetState = currentView) {
                 when(it){
                     View.MOVIES_CATEGORIES -> {
-                        Text( View.MOVIES_CATEGORIES.name)
+                        MoviesCategoriesView(categories = categories, onClick = ::onCategoryClicked)
                     }
                     View.MOVIES_LIST ->{
                         Text( View.MOVIES_LIST.name)

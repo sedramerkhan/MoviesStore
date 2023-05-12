@@ -17,8 +17,8 @@ fun getJsonDataFromAsset(context: Context, fileName: String): String? {
     }
 }
 
-fun getData(context: Context, fileName: String, type: Type): List<*> {
-    val jsonFileString = getJsonDataFromAsset(context, fileName)
+fun Context.getData( fileName: String, type: Type): List<*> {
+    val jsonFileString = getJsonDataFromAsset(this, fileName)
     Log.i("dataFromJson", jsonFileString ?: "Error")
     return Gson().fromJson(jsonFileString, type)
 }

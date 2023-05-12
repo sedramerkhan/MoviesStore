@@ -40,7 +40,6 @@ fun TopAppBar(
                 painterResource(id = R.drawable.bell), "bell",
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
-                    .padding(end = 20.dp)
             )
         }
 
@@ -48,7 +47,7 @@ fun TopAppBar(
         OutlinedTextField(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .fillMaxWidth(.85f),
+                .fillMaxWidth(.95f),
             value = searchValue, onValueChange = onValueChanged,
             placeholder = {
                 Text(
