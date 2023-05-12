@@ -53,15 +53,15 @@ fun MovieCard(
             .height(130.dp)
             .clickable { onClick() }
     ) {
-val round =8.dp
-        MovieImage(movie_id = movie.id,round)
+        val round = 8.dp
+        MovieImage(movie_id = movie.id, round)
         Spacer(modifier = Modifier.width(5.dp))
-        MovieDetails(movie = movie,round)
+        MovieDetails(movie = movie, round)
     }
 }
 
 @Composable
-fun MovieImage(movie_id: Int,round:Dp) {
+fun MovieImage(movie_id: Int, round: Dp) {
     val path = "https://darsoft.b-cdn.net/assets/movies/${movie_id}.jpg"
     val painter = rememberAsyncImagePainter(
         model = ImageRequest.Builder(LocalContext.current)
@@ -98,8 +98,10 @@ fun MovieDetails(
     round: Dp
 ) {
     Surface(modifier = Modifier.fillMaxSize(), shape = RoundedCornerShape(round)) {
-        Column(Modifier.padding(16.dp),
-        verticalArrangement = Arrangement.Center) {
+        Column(
+            Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.Center
+        ) {
             Text(
                 text = movie.title,
                 style = MaterialTheme.typography.h4
