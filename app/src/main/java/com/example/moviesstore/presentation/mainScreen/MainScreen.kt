@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.moviesstore.presentation.LogInTransitions
+import com.example.moviesstore.presentation.components.Loading
 import com.example.moviesstore.presentation.destinations.MovieDetailsScreenDestination
 import com.example.moviesstore.presentation.home.components.TopAppBar
 import com.example.moviesstore.presentation.mainScreen.moviesCategoriesView.MoviesCategoriesView
@@ -21,7 +22,6 @@ import com.example.moviesstore.presentation.mainScreen.components.BottomNavBar
 import com.example.moviesstore.presentation.mainScreen.components.View
 import com.example.moviesstore.presentation.mainScreen.moviesListView.MoviesListView
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -30,14 +30,14 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun MainScreen(
     navigator: DestinationsNavigator,
     viewModel: MainViewModel = hiltViewModel()
-) = viewModel.run{
+) = viewModel.run {
 
     BackHandler(currentView == View.MOVIES_LIST) {
         currentView = View.MOVIES_CATEGORIES
     }
     Scaffold(
         bottomBar = {
-            BottomNavBar( navigator =navigator, currentView = currentView, changeCurrentView = {
+            BottomNavBar(navigator = navigator, currentView = currentView, changeCurrentView = {
                 currentView = it
             })
         }
@@ -46,36 +46,45 @@ fun MainScreen(
             modifier = Modifier
                 .padding(it)
                 .padding(20.dp)
-        ){
-            TopAppBar(searchValue, onValueChanged = {
-                searchValue = it
-            }, onDone =::search
+        ) {
+            TopAppBar(
+                searchValue, onValueChanged = {
+                    searchValue = it
+                }, onDone = ::search
             )
-            Spacer(Modifier.height(20.dp))
+            if(loadingState){
+                Loading()
+            }
+            else{
+                Spacer(Modifier.height(20.dp))
+                AnimatedContent(targetState = currentView) {
+                    when (it) {
+                        View.MOVIES_CATEGORIES -> {
+                            MoviesCategoriesView(categories = categories, onClick = ::onCategoryClicked)
+                        }
+                        View.MOVIES_LIST -> {
+                            MoviesListView(
+                                title = chosenCategory!!.title,
+                                movies = movieListCategory,
+                                onClick = {
+                                    navigator.navigate(MovieDetailsScreenDestination(it))
+                                })
 
-            AnimatedContent(targetState = currentView) {
-                when(it){
-                    View.MOVIES_CATEGORIES -> {
-                        MoviesCategoriesView(categories = categories, onClick = ::onCategoryClicked)
-                    }
-                    View.MOVIES_LIST ->{
-                        MoviesListView(title = chosenCategory!!.title, movies =movieListCategory , onClick ={
-                            navigator.navigate(MovieDetailsScreenDestination(it))
-                        } )
+                        }
+                        View.WATCH_LIST -> {
+                            Text(View.WATCH_LIST.name)
 
-                    }
-                    View.WATCH_LIST ->{
-                        Text( View.WATCH_LIST.name)
+                        }
+                        View.PROFILE -> {
+                            Text(View.PROFILE.name)
 
-                    }
-                    View.PROFILE -> {
-                        Text( View.PROFILE.name)
+                        }
 
                     }
 
                 }
-
             }
+
         }
     }
 }

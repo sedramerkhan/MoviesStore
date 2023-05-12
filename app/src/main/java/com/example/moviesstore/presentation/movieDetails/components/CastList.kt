@@ -63,7 +63,7 @@ fun CastItem(actor: Actor, size: Dp, space: Dp) {
         ) {
             if (painter.state is AsyncImagePainter.State.Loading) {
                 Box(contentAlignment = Alignment.Center, modifier = Modifier.fillMaxSize()) {
-                    CircularProgressIndicator()
+                    CircularProgressIndicator(modifier = Modifier.size(size/3))
                 }
             }
 

@@ -1,6 +1,6 @@
 package com.example.moviesstore.presentation.mainScreen.moviesCategoriesView
 
-import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -10,12 +10,13 @@ import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.moviesstore.model.Category
+import kotlinx.coroutines.delay
 
 @Composable
 fun CategoriesList(
@@ -44,10 +45,22 @@ fun CategoryItem(
     category: Category,
     onClick: () -> Unit,
 ) {
+    var animate by remember{
+        mutableStateOf(false)
+    }
+
+    LaunchedEffect(key1 = Unit){
+        delay(100)
+        animate = true
+    }
+    BoxWithConstraints() {
+        val size by animateDpAsState(
+            targetValue = if (animate) maxWidth else 0.dp
+        )
     Card(
         onClick =  onClick,
         modifier = modifier
-            .fillMaxSize()
+            .size(size)
             .aspectRatio(1.2f),
         shape= RoundedCornerShape(25.dp),
         backgroundColor = MaterialTheme.colors.onBackground
@@ -63,6 +76,6 @@ fun CategoryItem(
                 textAlign = TextAlign.Center,
             )
         }
-
+    }
     }
 }

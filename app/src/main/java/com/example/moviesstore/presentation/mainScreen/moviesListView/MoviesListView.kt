@@ -14,26 +14,26 @@ fun MoviesListView(
     modifier: Modifier = Modifier,
     title: String,
     movies: List<Movie>,
-    onClick: (Int)-> Unit,
-){
-    if(movies.size>0)
-    Column(modifier) {
-        Text(
-            title,
-            color= MaterialTheme.colors.onSecondary,
-            style = MaterialTheme.typography.h3
-        )
+    onClick: (Int) -> Unit,
+) {
+    if (movies.isNotEmpty())
+        Column(modifier) {
+                Text(
+                    title,
+                    color = MaterialTheme.colors.onSecondary,
+                    style = MaterialTheme.typography.h3
+                )
 
-        Spacer(Modifier.height(20.dp))
+            Spacer(Modifier.height(20.dp))
 
-        MoviesList(movies = movies, onClick = onClick)
-    }
-    else{
-        Box(modifier.fillMaxSize()){
+            MoviesList(movies = movies, onClick = onClick)
+        }
+    else {
+        Box(modifier.fillMaxSize()) {
             Text(
                 text = "Coming Soon",
                 modifier = Modifier.align(Alignment.Center),
-                color= MaterialTheme.colors.onSecondary,
+                color = MaterialTheme.colors.onSecondary,
                 style = MaterialTheme.typography.h3
             )
         }

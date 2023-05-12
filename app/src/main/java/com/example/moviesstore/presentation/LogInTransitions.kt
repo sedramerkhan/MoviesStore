@@ -3,7 +3,6 @@ package com.example.moviesstore.presentation
 import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.navigation.NavBackStackEntry
-import com.example.moviesstore.presentation.appDestination
 import com.example.moviesstore.presentation.destinations.LogInScreenDestination
 
 import com.ramcosta.composedestinations.spec.DestinationStyle
@@ -15,7 +14,7 @@ object LogInTransitions : DestinationStyle.Animated {
 
         return when (initialState.appDestination()) {
             LogInScreenDestination ->
-                fadeIn(animationSpec = tween(500)) + expandVertically(tween(500))
+                fadeIn(animationSpec = tween(300)) + expandVertically(tween(300))
             else -> null
         }
     }
@@ -24,7 +23,7 @@ object LogInTransitions : DestinationStyle.Animated {
 
         return when (targetState.appDestination()) {
             LogInScreenDestination ->
-                fadeOut(animationSpec = tween(500)) + shrinkOut(tween(500))
+                fadeOut(animationSpec = tween(500)) + shrinkOut(tween(300))
             else -> null
         }
     }
@@ -32,7 +31,7 @@ object LogInTransitions : DestinationStyle.Animated {
     override fun AnimatedContentScope<NavBackStackEntry>.popEnterTransition(): EnterTransition? {
 
         return when (initialState.appDestination()) {
-            LogInScreenDestination -> fadeIn(animationSpec = tween(500))
+            LogInScreenDestination -> fadeIn(animationSpec = tween(300))
             else -> null
         }
     }
@@ -40,7 +39,7 @@ object LogInTransitions : DestinationStyle.Animated {
     override fun AnimatedContentScope<NavBackStackEntry>.popExitTransition(): ExitTransition? {
 
         return when (targetState.appDestination()) {
-            LogInScreenDestination -> fadeOut(animationSpec = tween(500))
+            LogInScreenDestination -> fadeOut(animationSpec = tween(300))
             else -> null
         }
     }
