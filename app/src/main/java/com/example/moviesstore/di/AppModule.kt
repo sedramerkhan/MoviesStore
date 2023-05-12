@@ -1,6 +1,7 @@
 package com.example.moviesstore.di
 
 import android.content.Context
+import com.example.moviesstore.data.repository.MainRepository
 import com.example.moviesstore.presentation.BaseApplication
 import dagger.Module
 import dagger.Provides
@@ -19,4 +20,7 @@ object AppModule {
         return app as BaseApplication
     }
 
+    @Singleton
+    @Provides
+    fun provideRepo(application: BaseApplication) = MainRepository(application)
 }
