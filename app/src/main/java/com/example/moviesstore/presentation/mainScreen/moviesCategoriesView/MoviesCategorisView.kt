@@ -1,4 +1,4 @@
-package com.example.moviesstore.presentation.mainScreen.MoviesCategoriesView
+package com.example.moviesstore.presentation.mainScreen.moviesCategoriesView
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,7 +14,7 @@ import com.example.moviesstore.model.Category
 fun MoviesCategoriesView(
     modifier: Modifier = Modifier,
     categories: List<Category>,
-    onClick: (Int)-> Unit,
+    onClick: (Category)-> Unit,
 ) {
     Column(modifier) {
         Text(

@@ -5,11 +5,10 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moviesstore.data.files.getData
 import com.example.moviesstore.model.Category
-import com.example.moviesstore.model.Detail
+import com.example.moviesstore.model.Movie
 import com.example.moviesstore.presentation.BaseApplication
 import com.example.moviesstore.presentation.mainScreen.components.View
 import com.google.gson.reflect.TypeToken
@@ -26,10 +25,13 @@ class MainViewModel @Inject constructor(
     var searchValue by mutableStateOf("")
 
     var categories = mutableStateListOf<Category>()
-    var movieList = mutableStateListOf<Detail>()
+    var movieList = mutableStateListOf<Movie>()
+    var movieListCategory = mutableStateListOf<Movie>()
 
+    var chosenCategory by mutableStateOf<Category?>(null)
     init {
         getCategories()
+        getMoviesList()
     }
 
     private fun getCategories() = viewModelScope.launch {
@@ -39,7 +41,20 @@ class MainViewModel @Inject constructor(
                 object : TypeToken<List<Category>>() {}.type
             ) as List<Category>
         )
-
+    }
+    private fun getMoviesList() = viewModelScope.launch {
+        movieList.addAll(
+            getApplication<BaseApplication>().getData(
+                "details.json",
+                object : TypeToken<List<Movie>>() {}.type
+            ) as List<Movie>
+        )
+    }
+    fun onCategoryClicked(category: Category) {
+        chosenCategory = category
+        currentView = View.MOVIES_LIST
+        movieListCategory.clear()
+        movieListCategory.addAll(movieList.filter {it.category_id == category.id  })
     }
 
     fun search() {
@@ -47,7 +62,5 @@ class MainViewModel @Inject constructor(
     }
 
 
-    fun onCategoryClicked(id: Int) {
 
-    }
 }

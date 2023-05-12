@@ -1,4 +1,4 @@
-package com.example.moviesstore.presentation.mainScreen.MoviesCategoriesView
+package com.example.moviesstore.presentation.mainScreen.moviesCategoriesView
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
@@ -19,7 +19,7 @@ import com.example.moviesstore.model.Category
 @Composable
 fun CategoriesList(
     categories: List<Category>,
-    onClick: (Int) -> Unit,
+    onClick: (Category) -> Unit,
 ) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -28,7 +28,7 @@ fun CategoriesList(
     ) {
         items(categories) {
             CategoryItem(modifier = Modifier, category = it) {
-                onClick(it.id)
+                onClick(it)
             }
         }
 

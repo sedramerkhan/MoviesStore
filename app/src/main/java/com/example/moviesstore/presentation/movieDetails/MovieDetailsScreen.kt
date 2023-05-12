@@ -10,6 +10,7 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 @Composable
 fun MovieDetailsScreen(
     navigator: DestinationsNavigator,
+    id: Int,
     viewModel: MovieDetailsViewModel = hiltViewModel()
 ){
 

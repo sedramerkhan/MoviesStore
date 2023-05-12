@@ -1,5 +1,6 @@
 package com.example.moviesstore.presentation.mainScreen
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Column
@@ -12,10 +13,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.moviesstore.presentation.destinations.MovieDetailsScreenDestination
 import com.example.moviesstore.presentation.home.components.TopAppBar
-import com.example.moviesstore.presentation.mainScreen.MoviesCategoriesView.MoviesCategoriesView
+import com.example.moviesstore.presentation.mainScreen.moviesCategoriesView.MoviesCategoriesView
 import com.example.moviesstore.presentation.mainScreen.components.BottomNavBar
 import com.example.moviesstore.presentation.mainScreen.components.View
+import com.example.moviesstore.presentation.mainScreen.moviesListView.MoviesListView
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
@@ -29,6 +32,9 @@ fun MainScreen(
     viewModel: MainViewModel = hiltViewModel()
 ) = viewModel.run{
 
+    BackHandler(currentView == View.MOVIES_LIST) {
+        currentView = View.MOVIES_CATEGORIES
+    }
     Scaffold(
         bottomBar = {
             BottomNavBar( navigator =navigator, currentView = currentView, changeCurrentView = {
@@ -37,7 +43,9 @@ fun MainScreen(
         }
     ) {
         Column(
-            modifier = Modifier.padding(it).padding(20.dp)
+            modifier = Modifier
+                .padding(it)
+                .padding(20.dp)
         ){
             TopAppBar(searchValue, onValueChanged = {
                 searchValue = it
@@ -51,7 +59,9 @@ fun MainScreen(
                         MoviesCategoriesView(categories = categories, onClick = ::onCategoryClicked)
                     }
                     View.MOVIES_LIST ->{
-                        Text( View.MOVIES_LIST.name)
+                        MoviesListView(title = chosenCategory!!.title, movies =movieListCategory , onClick ={
+                            navigator.navigate(MovieDetailsScreenDestination(it))
+                        } )
 
                     }
                     View.WATCH_LIST ->{
