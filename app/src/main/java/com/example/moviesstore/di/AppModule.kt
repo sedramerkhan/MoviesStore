@@ -1,6 +1,8 @@
 package com.example.moviesstore.di
 
 import android.content.Context
+import com.example.moviesstore.data.preference.AppDataStore
+import com.example.moviesstore.data.repository.LoginRepository
 import com.example.moviesstore.data.repository.MainRepository
 import com.example.moviesstore.presentation.BaseApplication
 import dagger.Module
@@ -22,5 +24,11 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepo(application: BaseApplication) = MainRepository(application)
+    fun provideRepo(application: BaseApplication) =
+        MainRepository(application)
+
+    @Singleton
+    @Provides
+    fun provideLoginRepo( appDataStore: AppDataStore) =
+        LoginRepository(appDataStore)
 }

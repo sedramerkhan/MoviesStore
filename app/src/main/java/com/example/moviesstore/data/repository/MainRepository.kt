@@ -5,10 +5,11 @@ import com.example.moviesstore.model.Category
 import com.example.moviesstore.model.Movie
 import com.example.moviesstore.presentation.BaseApplication
 import com.google.gson.reflect.TypeToken
+import javax.inject.Inject
 
 
-class MainRepository(
-    private val application: BaseApplication
+class MainRepository @Inject constructor(
+    private val application: BaseApplication,
 ) {
 
     fun getCategories(): List<Category> = application.getData(

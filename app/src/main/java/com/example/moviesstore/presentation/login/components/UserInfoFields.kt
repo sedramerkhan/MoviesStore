@@ -1,5 +1,7 @@
 package com.example.moviesstore.presentation.login.components
 
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,6 +13,7 @@ import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -23,8 +26,10 @@ data class TextFieldState(
     val value: String, val keyboardType: KeyboardType = KeyboardType.Text, val error: String
 )
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun UserInfoFields(
+    isLoading: Boolean,
     login: (User) -> Unit
 ) {
     val userInfo = remember {
@@ -109,7 +114,7 @@ fun UserInfoFields(
                         "Field should not be empty"
                     else if (password.length < 8)
                         "password should contain more than 8 characters"
-                    else if ("[!@#$&*~(\\]".none { it in  password})
+                    else if ("[!@#$&*~(\\]".none { it in password })
                         "password should contain at least one special character"
                     else
                         ""
@@ -127,11 +132,23 @@ fun UserInfoFields(
             }, shape = RoundedCornerShape(5.dp),
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(
-                text = "Login",
-                modifier = Modifier.padding(4.dp),
-                style = MaterialTheme.typography.button
-            )
+            AnimatedContent(
+                targetState = isLoading
+            ) {
+                if (it) {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(20.dp),
+                        color = Color.White
+                    )
+                } else {
+                    Text(
+                        text = "Login",
+                        modifier = Modifier.padding(4.dp),
+                        style = MaterialTheme.typography.button
+                    )
+                }
+            }
+
         }
     }
 }
