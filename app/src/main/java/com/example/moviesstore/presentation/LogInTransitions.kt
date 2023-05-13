@@ -23,7 +23,7 @@ object LogInTransitions : DestinationStyle.Animated {
 
         return when (targetState.appDestination()) {
             LogInScreenDestination ->
-                fadeOut(animationSpec = tween(500)) + shrinkOut(tween(300))
+                fadeOut(animationSpec = tween(800)) + shrinkOut(tween(300))
             else -> null
         }
     }

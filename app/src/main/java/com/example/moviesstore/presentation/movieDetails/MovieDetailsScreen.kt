@@ -37,7 +37,7 @@ fun MovieDetailsScreen(
                 }
                 YoutubeView(videoId = it.youtube_video_id)
                 Spacer(Modifier.height(space+8.dp))
-                ImageAndName(movie = it){
+                ImageAndName(movie = it,addedToWatchlist){
                     addToWatchList()
                 }
                 Spacer(Modifier.height(space))

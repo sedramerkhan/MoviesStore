@@ -1,5 +1,6 @@
 package com.example.moviesstore.presentation.mainScreen
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
@@ -26,13 +27,18 @@ class MainViewModel @Inject constructor(
     var categories = mutableStateListOf<Category>()
     var movieList = mutableStateListOf<Movie>()
     var movieListCategory = mutableStateListOf<Movie>()
+    var watchlist = mutableStateListOf<Movie>()
 
     var chosenCategory by mutableStateOf<Category?>(null)
 
     var loadingState by mutableStateOf(true)
+
     init {
         getCategories()
         getMoviesList()
+        getWatchlist()
+        Log.i("Hellooo",watchlist.toList().toString())
+
     }
 
     private fun getCategories() = viewModelScope.launch {
@@ -56,5 +62,11 @@ class MainViewModel @Inject constructor(
 
     }
 
-
+    fun getWatchlist() = viewModelScope.launch {
+        repo.getWatchlist().collect {
+            it?.let { list ->
+                watchlist.addAll(movieList.filter { list.contains(it.id) })
+            }
+        }
+    }
 }

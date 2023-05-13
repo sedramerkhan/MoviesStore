@@ -1,5 +1,6 @@
 package com.example.moviesstore.presentation.movieDetails.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,6 +23,7 @@ import com.example.moviesstore.model.Movie
 @Composable
 fun ImageAndName(
     movie: Movie,
+    addedToWatchList: Boolean,
     addToWatchList: ()-> Unit,
 ) {
 
@@ -29,7 +31,7 @@ fun ImageAndName(
         val height = 170.dp
         MovieImage(movie_id = movie.id, round = 8.dp, height = height)
         Spacer(Modifier.width(20.dp))
-        MovieDetails(movie = movie, height = height){
+        MovieDetails(movie = movie, height = height,addedToWatchList=addedToWatchList){
             addToWatchList()
         }
     }
@@ -72,10 +74,13 @@ fun MovieImage(movie_id: Int, round: Dp, height: Dp) {
 fun MovieDetails(
     movie: Movie,
     height: Dp,
+    addedToWatchList:Boolean,
     addToWatchList: () -> Unit,
 ) {
     Column(
-        Modifier.height(height).padding(top=20.dp),
+        Modifier
+            .height(height)
+            .padding(top = 20.dp),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
@@ -100,15 +105,22 @@ fun MovieDetails(
             )
         }
 
-        Button(
-            modifier = Modifier.fillMaxWidth(.9f),
-            onClick = addToWatchList,
-            shape = RoundedCornerShape(30.dp),
-        ) {
-            Text(
-                text = "Add to Watchlist",
-                style = MaterialTheme.typography.button
-            )
+       AnimatedVisibility(visible = !addedToWatchList) {
+            Button(
+                modifier = Modifier.fillMaxWidth(.9f),
+                onClick = addToWatchList,
+                shape = RoundedCornerShape(30.dp),
+            ) {
+                Text(
+                    text = "Add to Watchlist",
+                    style = MaterialTheme.typography.button
+                )
+            }
         }
+        if(addedToWatchList)
+            Spacer(
+                modifier = Modifier.height(40.dp)
+            )
+
     }
 }

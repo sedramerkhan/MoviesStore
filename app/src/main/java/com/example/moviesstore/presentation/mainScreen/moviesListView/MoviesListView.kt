@@ -13,6 +13,7 @@ import com.example.moviesstore.model.Movie
 fun MoviesListView(
     modifier: Modifier = Modifier,
     title: String,
+    emptyMessage:String,
     movies: List<Movie>,
     onClick: (Int) -> Unit,
 ) {
@@ -31,7 +32,7 @@ fun MoviesListView(
     else {
         Box(modifier.fillMaxSize()) {
             Text(
-                text = "Coming Soon",
+                text = emptyMessage,
                 modifier = Modifier.align(Alignment.Center),
                 color = MaterialTheme.colors.onSecondary,
                 style = MaterialTheme.typography.h3

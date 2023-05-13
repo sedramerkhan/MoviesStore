@@ -137,7 +137,7 @@ fun UserInfoFields(
             ) {
                 if (it) {
                     CircularProgressIndicator(
-                        modifier = Modifier.size(20.dp),
+                        modifier = Modifier.size(30.dp),
                         color = Color.White
                     )
                 } else {

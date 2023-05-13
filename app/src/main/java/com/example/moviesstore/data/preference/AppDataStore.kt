@@ -40,6 +40,7 @@ class AppDataStore @Inject constructor(
     private val userDataKey = stringPreferencesKey("user data")
     private val Context.dataStore by preferencesDataStore(name = "pref")
 
+    private val watchlistDataKey = stringPreferencesKey("watchlist")
 
     val userInfo: Flow<User?> = context.dataStore.data.catch(exceptionHandler).map{
         it[userDataKey]?.let {
@@ -47,9 +48,34 @@ class AppDataStore @Inject constructor(
         }
     }
 
+    val watchlist: Flow<List<Int>?> = context.dataStore.data.catch(exceptionHandler).map{
+        it[watchlistDataKey]?.let {
+            it.split(',').map{
+                it.toInt()
+            }
+        }
+    }
+
     fun storeUserData(user: User) = scope.launch {
         context.dataStore.edit {
-            it[userDataKey] = gson.toJson(user)
+            it[userDataKey] =  gson.toJson(user)
+        }
+    }
+
+    fun storeMovieInWatchlist(id:Int) = scope.launch {
+        context.dataStore.edit {
+            it[watchlistDataKey]?.let{ nums->
+                it[watchlistDataKey] = "$nums,$id"
+            } ?: run{
+                it[watchlistDataKey] =  id.toString()
+            }
+
+        }
+    }
+    fun logout() = scope.launch {
+        context.dataStore.edit {
+            it[userDataKey] = ""
+            it[watchlistDataKey] = ""
         }
     }
 }

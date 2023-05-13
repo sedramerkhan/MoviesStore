@@ -1,5 +1,6 @@
 package com.example.moviesstore.presentation.mainScreen
 
+import android.util.Log
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ExperimentalAnimationApi
@@ -35,6 +36,7 @@ fun MainScreen(
     BackHandler(currentView == View.MOVIES_LIST) {
         currentView = View.MOVIES_CATEGORIES
     }
+    Log.i("Hellooo",watchlist.toString())
     Scaffold(
         bottomBar = {
             BottomNavBar(navigator = navigator, currentView = currentView, changeCurrentView = {
@@ -65,6 +67,7 @@ fun MainScreen(
                         View.MOVIES_LIST -> {
                             MoviesListView(
                                 title = chosenCategory!!.title,
+                                emptyMessage = "Coming Soon",
                                 movies = movieListCategory,
                                 onClick = {
                                     navigator.navigate(MovieDetailsScreenDestination(it))
@@ -72,7 +75,13 @@ fun MainScreen(
 
                         }
                         View.WATCH_LIST -> {
-                            Text(View.WATCH_LIST.name)
+                            MoviesListView(
+                                title = "Watchlist",
+                                emptyMessage = "No Added Movies",
+                                movies = watchlist,
+                                onClick = {
+                                    navigator.navigate(MovieDetailsScreenDestination(it))
+                                })
 
                         }
                         View.PROFILE -> {

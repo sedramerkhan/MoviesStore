@@ -26,44 +26,44 @@ import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 fun LogInScreen(
     navigator: DestinationsNavigator,
     viewModel: LoginViewModel = hiltViewModel()
-) = viewModel.run{
-    
-    if(user!= null){
+) = viewModel.run {
+
+    Log.i("Hellooo", user.toString())
+
+    if (user != null) {
         navigator.popBackStack()
         navigator.navigate(MainScreenDestination)
     }
-    else{
-        Scaffold(
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(it)
-                    .padding(30.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                val space = 20.dp
-                Spacer(modifier = Modifier.height(space))
-                Texts()
-                Spacer(modifier = Modifier.height(space))
-                Image(
-                    painter = painterResource(id = R.drawable.movie_pop_corn), contentDescription = "",
-                    modifier = Modifier.weight(1f)
-                )
 
-                UserInfoFields(
-                    isLoading=isLoading,
-                    login = {
-                        Log.i("Hellooooooooo", it.toString())
-                        login(it)
-                    })
-                Button(onClick = { navigator.navigate(MainScreenDestination) }) {
-                    Text(
-                        "Click me"
-                    )
-                }
+    Scaffold(
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(it)
+                .padding(30.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            val space = 20.dp
+            Spacer(modifier = Modifier.height(space))
+            Texts()
+            Spacer(modifier = Modifier.height(space))
+            Image(
+                painter = painterResource(id = R.drawable.movie_pop_corn), contentDescription = "",
+                modifier = Modifier.weight(1f)
+            )
+
+            UserInfoFields(
+                isLoading = isLoading,
+                login = {
+                    Log.i("Hellooooooooo", it.toString())
+                    login(it)
+                })
+            Button(onClick = { navigator.navigate(MainScreenDestination) }) {
+                Text(
+                    "Click me"
+                )
             }
         }
     }
-
 }

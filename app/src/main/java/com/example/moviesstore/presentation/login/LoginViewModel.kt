@@ -13,22 +13,24 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel  @Inject constructor(
-   private val loginRepository: LoginRepository
-): ViewModel() {
+class LoginViewModel @Inject constructor(
+    private val loginRepository: LoginRepository
+) : ViewModel() {
 
-     var user by mutableStateOf<User?>(null)
+    var user by mutableStateOf<User?>(null)
     var isLoading by mutableStateOf(false)
-    init{
+
+    init {
         getUserInfo()
     }
-    private fun getUserInfo() = viewModelScope.launch{
-        loginRepository.getUserInfo().collect{
+
+    private fun getUserInfo() = viewModelScope.launch {
+        loginRepository.getUserInfo().collect {
             user = it
         }
     }
 
-    fun login(user: User) = viewModelScope.launch{
+    fun login(user: User) = viewModelScope.launch {
         isLoading = true
         delay(1000)
         loginRepository.login(user)

@@ -24,11 +24,13 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideRepo(application: BaseApplication) =
-        MainRepository(application)
+    fun provideRepo(
+        application: BaseApplication, dataStore: AppDataStore
+    ) =
+        MainRepository(application, dataStore)
 
     @Singleton
     @Provides
-    fun provideLoginRepo( appDataStore: AppDataStore) =
+    fun provideLoginRepo(appDataStore: AppDataStore) =
         LoginRepository(appDataStore)
 }

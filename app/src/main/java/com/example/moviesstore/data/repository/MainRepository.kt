@@ -1,6 +1,7 @@
 package com.example.moviesstore.data.repository
 
 import com.example.moviesstore.data.files.getData
+import com.example.moviesstore.data.preference.AppDataStore
 import com.example.moviesstore.model.Category
 import com.example.moviesstore.model.Movie
 import com.example.moviesstore.presentation.BaseApplication
@@ -10,6 +11,7 @@ import javax.inject.Inject
 
 class MainRepository @Inject constructor(
     private val application: BaseApplication,
+    private val dataStore: AppDataStore
 ) {
 
     fun getCategories(): List<Category> = application.getData(
@@ -17,18 +19,26 @@ class MainRepository @Inject constructor(
         object : TypeToken<List<Category>>() {}.type
     ) as List<Category>
 
-     fun getMoviesList() =
+    fun getMoviesList() =
         application.getData(
             "details.json",
             object : TypeToken<List<Movie>>() {}.type
         ) as List<Movie>
 
-    fun getMovie(id:Int): Movie {
-        val movie= application.getData(
-        "details.json",
-        object : TypeToken<List<Movie>>() {}.type
+    fun getMovie(id: Int): Movie {
+        val movie = application.getData(
+            "details.json",
+            object : TypeToken<List<Movie>>() {}.type
         ) as List<Movie>
 
-        return movie.first { it.id ==id }
+        return movie.first { it.id == id }
     }
+
+    fun addToWatchlist(id: Int) {
+        dataStore.storeMovieInWatchlist(id)
+    }
+
+    fun getWatchlist() =
+        dataStore.watchlist
+
 }

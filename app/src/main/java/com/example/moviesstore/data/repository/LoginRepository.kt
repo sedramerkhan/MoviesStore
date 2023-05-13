@@ -12,4 +12,8 @@ class LoginRepository @Inject constructor(
     }
 
     fun getUserInfo()= dataStore.userInfo
+
+    fun logout() {
+        dataStore.logout()
+    }
 }
