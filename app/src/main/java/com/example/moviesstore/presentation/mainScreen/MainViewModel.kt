@@ -67,9 +67,10 @@ class MainViewModel @Inject constructor(
 
     }
 
-    fun getWatchlist() = viewModelScope.launch {
+    private fun getWatchlist() = viewModelScope.launch {
         repo.getWatchlist().collect {
             it?.let { list ->
+                watchlist.clear()
                 watchlist.addAll(movieList.filter { list.contains(it.id) })
             }
         }
