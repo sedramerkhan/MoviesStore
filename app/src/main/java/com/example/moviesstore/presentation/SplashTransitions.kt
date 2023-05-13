@@ -4,16 +4,17 @@ import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
 import androidx.navigation.NavBackStackEntry
 import com.example.moviesstore.presentation.destinations.LogInScreenDestination
+import com.example.moviesstore.presentation.destinations.SplashScreenDestination
 
 import com.ramcosta.composedestinations.spec.DestinationStyle
 
 @OptIn(ExperimentalAnimationApi::class)
-object LogInTransitions : DestinationStyle.Animated {
+object SplashTransitions : DestinationStyle.Animated {
 
     override fun AnimatedContentScope<NavBackStackEntry>.enterTransition(): EnterTransition? {
 
         return when (initialState.appDestination()) {
-            LogInScreenDestination ->
+            SplashScreenDestination ->
                 fadeIn(animationSpec = tween(300)) + expandVertically(tween(300))
             else -> null
         }
@@ -22,8 +23,8 @@ object LogInTransitions : DestinationStyle.Animated {
     override fun AnimatedContentScope<NavBackStackEntry>.exitTransition(): ExitTransition? {
 
         return when (targetState.appDestination()) {
-            LogInScreenDestination ->
-                fadeOut(animationSpec = tween(800)) + shrinkOut(tween(300))
+            SplashScreenDestination ->
+                fadeOut(animationSpec = tween(300)) + shrinkOut(tween(300))
             else -> null
         }
     }
@@ -31,7 +32,7 @@ object LogInTransitions : DestinationStyle.Animated {
     override fun AnimatedContentScope<NavBackStackEntry>.popEnterTransition(): EnterTransition? {
 
         return when (initialState.appDestination()) {
-            LogInScreenDestination -> fadeIn(animationSpec = tween(300))
+            SplashScreenDestination -> fadeIn(animationSpec = tween(800))
             else -> null
         }
     }
@@ -39,7 +40,7 @@ object LogInTransitions : DestinationStyle.Animated {
     override fun AnimatedContentScope<NavBackStackEntry>.popExitTransition(): ExitTransition? {
 
         return when (targetState.appDestination()) {
-            LogInScreenDestination -> fadeOut(animationSpec = tween(300))
+            SplashScreenDestination -> fadeOut(animationSpec = tween(300))
             else -> null
         }
     }

@@ -13,22 +13,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.moviesstore.R
+import com.example.moviesstore.presentation.SplashTransitions
 import com.example.moviesstore.presentation.destinations.MainScreenDestination
 import com.example.moviesstore.presentation.login.components.Texts
 import com.example.moviesstore.presentation.login.components.UserInfoFields
 import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@RootNavGraph(start = true)
-@Destination
+@Destination(style = SplashTransitions::class)
 @Composable
 fun LogInScreen(
     navigator: DestinationsNavigator,
     viewModel: LoginViewModel = hiltViewModel()
 ) = viewModel.run {
-
-    Log.i("Hellooo", user.toString())
 
     if (user != null) {
         navigator.popBackStack()
@@ -56,14 +53,9 @@ fun LogInScreen(
             UserInfoFields(
                 isLoading = isLoading,
                 login = {
-                    Log.i("Hellooooooooo", it.toString())
                     login(it)
                 })
-            Button(onClick = { navigator.navigate(MainScreenDestination) }) {
-                Text(
-                    "Click me"
-                )
-            }
+
         }
     }
 }

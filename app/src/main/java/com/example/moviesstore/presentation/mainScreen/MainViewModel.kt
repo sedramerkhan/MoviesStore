@@ -7,9 +7,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.moviesstore.data.repository.LoginRepository
 import com.example.moviesstore.data.repository.MainRepository
 import com.example.moviesstore.model.Category
 import com.example.moviesstore.model.Movie
+import com.example.moviesstore.model.User
 import com.example.moviesstore.presentation.mainScreen.components.View
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
@@ -18,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val repo: MainRepository
+    private val repo: MainRepository,
+    private val loginRepository: LoginRepository
 ) : ViewModel() {
 
     var currentView by mutableStateOf(View.MOVIES_CATEGORIES)
@@ -33,12 +36,14 @@ class MainViewModel @Inject constructor(
 
     var loadingState by mutableStateOf(true)
 
+    var user by mutableStateOf<User?>(null)
+
     init {
         getCategories()
         getMoviesList()
         getWatchlist()
-        Log.i("Hellooo",watchlist.toList().toString())
 
+        getUserInfo()
     }
 
     private fun getCategories() = viewModelScope.launch {
@@ -68,5 +73,16 @@ class MainViewModel @Inject constructor(
                 watchlist.addAll(movieList.filter { list.contains(it.id) })
             }
         }
+    }
+
+    /*** User */
+    private fun getUserInfo() = viewModelScope.launch {
+        loginRepository.getUserInfo().collect {
+            user = it
+        }
+    }
+
+    fun logout(){
+        loginRepository.logout()
     }
 }

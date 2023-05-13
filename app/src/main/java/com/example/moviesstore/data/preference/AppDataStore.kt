@@ -74,8 +74,7 @@ class AppDataStore @Inject constructor(
     }
     fun logout() = scope.launch {
         context.dataStore.edit {
-            it[userDataKey] = ""
-            it[watchlistDataKey] = ""
+            it.clear()
         }
     }
 }
